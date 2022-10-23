@@ -32,12 +32,15 @@ class FileHelpers {
 
 class Handler implements URLHandler {
     List<File> files;
+    
     Handler(String directory) throws IOException {
       this.files = FileHelpers.getFiles(Paths.get(directory));
     }
     public String handleRequest(URI url) throws IOException {
+      Path start = url;
       if (url.getPath().equals("/")) {
-        return("path Success");
+        files = FileHelpers.getFiles();
+        return("there are " + NNNN + " files to search");
       }
       return "Don't know how to handle that path!";
     }
